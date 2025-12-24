@@ -112,7 +112,7 @@ It is designed to promote collaboration, research, and hands-on learning in the 
 
 © 2025 – Islamic Azad University, Central Tehran Branch
 
-**Instructor:** Dr. Maryam Haji Esmaeili
+**Instructor:** Dr. Maryam HajiEsmaeili
 
 **Prepared by:** Iliya Nazmehr
 
