@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detector</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #0f0f0f;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 32px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    video {
+      border-radius: 12px;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    canvas {
+      position: absolute;
+      border-radius: 12px;
+    }
+
+    .wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Detector</h1>
+
+  <div class="wrapper">
+    <video id="video" width="720" height="560" autoplay muted></video>
+    <canvas id="overlay"></canvas>
+    <hr>
+    <a class="btn btn-light btn-lg" href="/" role="button">home page</a>
+  </div>
+
+  <script src="/js/face-api.min.js"></script>
+  <script src="/js/script.js"></script>
+
+</body>
+
+</html>
