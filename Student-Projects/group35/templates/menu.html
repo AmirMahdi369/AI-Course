@@ -1,0 +1,390 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی کافه ☕</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Vazirmatn, sans-serif;
+            background: linear-gradient(135deg, #2c1810, #4a2c1f, #6f4e37);
+            min-height: 100vh;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        header h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            color: #d7ccc8;
+        }
+        
+        .ai-button-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .ai-recommend-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff6f00, #ff8f00);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .ai-recommend-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 111, 0, 0.6);
+            background: linear-gradient(135deg, #ff8f00, #ffa726);
+        }
+        
+        .ai-recommend-btn::before {
+            content: "🤖 ";
+            font-size: 1.2em;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .menu-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            color: #333;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .menu-item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid #6f4e37;
+        }
+        
+        .menu-item-content {
+            padding: 25px;
+        }
+        
+        .menu-item-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4e342e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .menu-item-description {
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .no-items {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: #d7ccc8;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-recommend-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ کافه ما</h1>
+            <p>بهترین قهوه‌ها برای لحظات خاص شما</p>
+        </header>
+        
+        <div class="ai-button-container">
+            <a href="{% url 'ai_recommendation' %}" class="ai-recommend-btn">
+                پیشنهاد هوشمند بر اساس حال شما
+            </a>
+        </div>
+        
+        {% if menu_items %}
+            <div class="menu-grid">
+                {% for item in menu_items %}
+                    <div class="menu-item">
+                        <img src="{{ item.image.url }}" alt="{{ item.item }}" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">{{ item.item }}</h3>
+                            <p class="menu-item-description">{{ item.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-items">
+                <p>هنوز آیتمی به منو اضافه نشده است 😊</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html> {% endcomment %}
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی کافه ☕</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Vazirmatn, sans-serif;
+            background: linear-gradient(135deg, #2c1810, #4a2c1f, #6f4e37);
+            min-height: 100vh;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        header h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            color: #d7ccc8;
+        }
+        
+        .ai-button-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .ai-recommend-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff6f00, #ff8f00);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 111, 0, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .ai-recommend-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 111, 0, 0.6);
+            background: linear-gradient(135deg, #ff8f00, #ffa726);
+        }
+        
+        .ai-recommend-btn::before {
+            content: "🤖 ";
+            font-size: 1.2em;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .menu-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            color: #333;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .menu-item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid #6f4e37;
+        }
+        
+        .menu-item-content {
+            padding: 25px;
+        }
+        
+        .menu-item-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4e342e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .menu-item-description {
+            color: #666;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .upload-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .upload-section h2 {
+            margin-bottom: 20px;
+            color: #ffa726;
+        }
+        
+        .upload-section p {
+            color: #d7ccc8;
+            margin-bottom: 15px;
+        }
+        
+        .upload-path {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            color: #ffd54f;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-recommend-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ کافه ما</h1>
+            <p>بهترین قهوه‌ها برای لحظات خاص شما</p>
+        </header>
+        
+        <div class="ai-button-container">
+            <a href="{% url 'ai_recommendation' %}" class="ai-recommend-btn">
+                پیشنهاد هوشمند بر اساس حال شما
+            </a>
+        </div>
+        
+        <!-- Menu grid with default items -->
+        <div class="menu-grid">
+            {% for item in menu_items %}
+                <div class="menu-item">
+                    {% if item.image_url %}
+                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="menu-item-image">
+                    {% else %}
+                        <!-- Fallback emoji if no image -->
+                        <div class="menu-item-image" style="display: flex; align-items: center; justify-content: center; font-size: 4em; background: linear-gradient(135deg, #d7ccc8, #bcaaa4);">
+                            {{ item.emoji }}
+                        </div>
+                    {% endif %}
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-title">{{ item.name }}</h3>
+                        <p class="menu-item-description">{{ item.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
