@@ -13,6 +13,7 @@ An intelligent Telegram bot that analyzes images with multiple people and plays 
 
 - Mohammad amin Jafarian ([@BaziForYou](https://github.com/BaziForYou))
 - Mohammad Hossein Meftah ([@MHKEY81](https://github.com/MHKEY81))
+- Sabrineh Pourmarashi ([@puormarashisabrineh](https://github.com/puormarashisabrineh))
 
 
 ## Features
