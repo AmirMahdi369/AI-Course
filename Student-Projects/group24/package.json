@@ -1,0 +1,23 @@
+{
+  "name": "person_gusser_from_image",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "@vladmandic/human": "^3.3.6",
+    "canvas": "^3.2.0",
+    "color-name-list": "^13.41.0",
+    "colornamer": "^1.0.9",
+    "dotenv": "^17.2.3",
+    "ml-kmeans": "^7.0.0",
+    "openai": "^6.15.0",
+    "telegraf": "^4.16.3",
+    "uuid": "^13.0.0"
+  }
+}
